@@ -1,10 +1,9 @@
 :root {
-  /* Paleta Dark Mode Tech (Estilo Antigravity) */
   --bg-color: #050505;
   --text-color: #ffffff;
-  --accent-color: #8b5cf6; /* Roxo vibrante */
-  --accent-color-2: #3b82f6; /* Azul IA */
-  --whatsapp-color: #25d366; /* Verde Oficial WhatsApp */
+  --accent-color: #8b5cf6;
+  --accent-color-2: #3b82f6;
+  --whatsapp-color: #25d366;
   --secondary-text: #a1a1aa;
   --card-bg: rgba(20, 20, 25, 0.4);
   --border-color: rgba(255, 255, 255, 0.08);
@@ -30,7 +29,6 @@ a {
   outline: none;
 }
 
-/* --- BACKGROUND ANIMADO (PERSPECTIVE GRID & AURORA) --- */
 .bg-elements {
   position: fixed;
   top: 0;
@@ -132,7 +130,6 @@ a {
   }
 }
 
-/* --- MENU LATERAL DE REDES SOCIAIS --- */
 .social-side-wrapper {
   position: fixed;
   left: 40px;
@@ -203,14 +200,10 @@ a {
   }
 }
 
-/* Oculta a versão mobile por padrão */
 .mobile-social-inline {
   display: none;
 }
 
-/* --- ESTILOS PRINCIPAIS --- */
-
-/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -289,7 +282,6 @@ a {
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
 }
 
-/* Hero Section */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -409,7 +401,6 @@ a {
   transform: translateY(-4px);
 }
 
-/* Projetos */
 .projects {
   padding: 120px 8%;
   position: relative;
@@ -481,7 +472,6 @@ a {
   font-size: 0.95rem;
 }
 
-/* --- TECH STACK DOS CARDS --- */
 .tech-stack {
   display: flex;
   gap: 20px;
@@ -518,7 +508,6 @@ a {
   color: #e2e8f0;
 }
 
-/* Animação Front-end */
 .frontend li {
   animation: floatFront 3s ease-in-out infinite;
 }
@@ -542,7 +531,6 @@ a {
   }
 }
 
-/* Animação Back-end */
 .backend li {
   animation: pulseBack 3s ease-in-out infinite;
 }
@@ -575,7 +563,6 @@ a {
   z-index: 2;
 }
 
-/* Seção Sobre */
 .about {
   padding: 120px 8%;
   background: rgba(5, 5, 5, 0.6);
@@ -599,7 +586,6 @@ a {
   margin: 0 auto;
 }
 
-/* Scroll Indicator */
 .scroll-indicator {
   position: absolute;
   bottom: 40px;
@@ -625,7 +611,6 @@ a {
   }
 }
 
-/* --- ESTILOS COMPARTILHADOS DOS MODAIS --- */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -692,7 +677,6 @@ a {
   transform: rotate(90deg);
 }
 
-/* --- MODAL DO PROJETO --- */
 .carousel-wrapper {
   position: relative;
   height: 500px;
@@ -774,7 +758,6 @@ a {
   color: var(--secondary-text);
 }
 
-/* --- MODAL DE CONTATO --- */
 .contact-modal-container {
   max-width: 450px;
   background: radial-gradient(
@@ -844,7 +827,6 @@ a {
   color: #000000;
 }
 
-/* --- CORREÇÃO DO MENU MOBILE (A MÁGICA ACONTECE AQUI) --- */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -878,7 +860,6 @@ a {
     margin-top: 20px;
   }
 
-  /* Ajuste para a seção inicial não quebrar em telas curtas */
   .hero {
     height: auto;
     min-height: 100vh;
@@ -916,12 +897,10 @@ a {
     justify-content: center;
   }
 
-  /* OCULTA o menu lateral fixo para não sobrepor os botões */
   .social-side-wrapper {
     display: none;
   }
 
-  /* MOSTRA o menu de redes sociais inline abaixo do botão Minha História */
   .mobile-social-inline {
     display: flex;
     flex-direction: row;
@@ -949,7 +928,6 @@ a {
     filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.8));
   }
 
-  /* Limpa a tela no mobile escondendo o indicador de scroll */
   .scroll-indicator {
     display: none;
   }

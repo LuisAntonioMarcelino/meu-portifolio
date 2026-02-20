@@ -1,10 +1,8 @@
-// --- Forçar a página a carregar sempre no topo ---
 if (history.scrollRestoration) {
   history.scrollRestoration = "manual";
 }
 window.scrollTo(0, 0);
 
-// --- Configurações Iniciais (AOS e Navbar) ---
 AOS.init({
   duration: 1000,
   easing: "ease-out-cubic",
@@ -21,7 +19,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// --- LÓGICA DO MENU MOBILE ---
 const mobileMenuBtn = document.getElementById("mobile-menu");
 const navLinksContainer = document.getElementById("nav-links");
 const navItems = document.querySelectorAll(".nav-item");
@@ -59,8 +56,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// --- LÓGICA DOS MODAIS (PROJETOS & CONTATO) ---
-
 const projectModal = document.getElementById("projectModal");
 const closeProjectBtn = document.getElementById("closeProjectModal");
 const carouselSlidesContainer = document.getElementById("carouselSlides");
@@ -77,7 +72,6 @@ const btnNavContact = document.getElementById("btnContact");
 let currentSlideIndex = 0;
 let totalSlides = 0;
 
-// Projetos Atualizados com as suas imagens
 const projectsData = {
   "proj-1": {
     title: "SaaS Billing",
