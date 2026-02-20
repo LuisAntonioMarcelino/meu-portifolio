@@ -232,9 +232,23 @@ a {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.5px;
+  z-index: 1002; /* Fica acima do menu mobile */
 }
 
 .logo span {
+  color: var(--accent-color);
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: var(--text-color);
+  cursor: pointer;
+  z-index: 1002; /* Fica acima do menu mobile */
+  transition: 0.3s;
+}
+
+.menu-toggle:hover {
   color: var(--accent-color);
 }
 
@@ -280,7 +294,6 @@ a {
   background: transparent;
 }
 
-/* NOVO: Nome com animação Shimmer (Feixe de Luz) */
 .greeting {
   font-size: 1.5rem;
   color: var(--secondary-text);
@@ -294,7 +307,6 @@ a {
   font-weight: 700;
   display: inline-block;
   margin-top: 5px;
-  /* Gradiente largo que vai se mover */
   background: linear-gradient(
     90deg,
     #ffffff 0%,
@@ -310,7 +322,6 @@ a {
   -webkit-background-clip: text;
   text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
-  /* Animação contínua e suave */
   animation: shine 4s linear infinite;
 }
 
@@ -349,7 +360,6 @@ a {
   font-weight: 300;
 }
 
-/* Botões Profissionais Dark */
 .cta-group {
   display: flex;
   gap: 20px;
@@ -525,7 +535,7 @@ a {
   }
 }
 
-/* --- ESTILOS COMPARTILHADOS DOS MODAIS --- */
+/* --- ESTILOS DOS MODAIS --- */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -592,7 +602,6 @@ a {
   transform: rotate(90deg);
 }
 
-/* --- MODAL DO PROJETO --- */
 .carousel-wrapper {
   position: relative;
   height: 500px;
@@ -673,7 +682,6 @@ a {
   color: var(--secondary-text);
 }
 
-/* --- MODAL DE CONTATO --- */
 .contact-modal-container {
   max-width: 450px;
   background: radial-gradient(
@@ -743,26 +751,85 @@ a {
   color: #000000;
 }
 
-/* --- RESPONSIVIDADE --- */
+/* --- RESPONSIVIDADE TOTAL (MOBILE & TABLET) --- */
 @media (max-width: 768px) {
-  .carousel-wrapper {
-    height: 300px;
+  /* Navbar Mobile com Fundo Embaçado (Overlay) */
+  .menu-toggle {
+    display: block;
   }
-  .carousel-btn {
-    width: 40px;
-    height: 40px;
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1001;
+  }
+  .nav-links.active {
+    right: 0;
+  }
+  .nav-links a {
+    font-size: 1.5rem; /* Letras grandes no menu mobile */
+    margin: 15px 0;
+  }
+  .btn-nav-contact {
+    margin-top: 20px;
+  }
+
+  /* Tipografia e Espaçamentos ajustados */
+  .hero {
+    padding-top: 80px;
+  }
+  .greeting {
     font-size: 1.2rem;
   }
-  .hero h1 {
-    font-size: 3.5rem;
-  }
   .animated-name {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
+  .hero h1 {
+    font-size: 3.2rem;
+    line-height: 1.1;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+  .section-header h2,
+  .about h2 {
+    font-size: 2.2rem;
+  }
+
+  /* Botões empilhados */
+  .cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+  }
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Grid do Projeto: agora 1 coluna em telas menores */
+  .grid {
+    grid-template-columns: minmax(100%, 1fr);
+    gap: 30px;
+  }
+  .card-image {
+    height: 250px;
+  }
+
+  /* Redes Sociais no final da seção hero */
   .social-side-wrapper {
     position: absolute;
     top: auto;
-    bottom: 120px;
+    bottom: 80px; /* Acima do indicador de scroll */
     left: 50%;
     transform: translateX(-50%);
     flex-direction: row;
@@ -771,17 +838,32 @@ a {
   }
   .social-side-menu {
     flex-direction: row;
-    padding: 15px 25px;
-    gap: 25px;
+    padding: 12px 20px;
+    gap: 20px;
   }
   .social-line {
     display: none;
   }
+
+  /* Ajustes dos Modais */
+  .carousel-wrapper {
+    height: 300px;
+  }
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
   .contact-modal-container {
     padding: 40px 20px;
+  }
+  .contact-content h3 {
+    font-size: 1.5rem;
   }
   .btn-whatsapp {
     padding: 15px 20px;
     font-size: 1rem;
+    width: 100%;
+    justify-content: center;
   }
 }

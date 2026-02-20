@@ -60,11 +60,20 @@
 
     <nav class="navbar">
       <div class="logo">DEV<span>.</span></div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#work">Projetos</a></li>
-        <li><a href="#about">Sobre</a></li>
-        <li><a href="#" class="btn-nav-contact" id="btnContact">Contato</a></li>
+
+      <div class="menu-toggle" id="mobile-menu">
+        <i class="bi bi-list"></i>
+      </div>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-item">Home</a></li>
+        <li><a href="#work" class="nav-item">Projetos</a></li>
+        <li><a href="#about" class="nav-item">Sobre</a></li>
+        <li>
+          <a href="#" class="btn-nav-contact nav-item" id="btnContact"
+            >Contato</a
+          >
+        </li>
       </ul>
     </nav>
 
@@ -100,8 +109,8 @@
         <div class="card" data-aos="fade-up" data-project="proj-1">
           <div class="card-image bg-1"></div>
           <div class="card-info">
-            <h3>Fintech App</h3>
-            <p>UI/UX & Development</p>
+            <h3>API SaaSBilling</h3>
+            <p>REST API Development</p>
           </div>
         </div>
         <div
@@ -123,9 +132,15 @@
       <div class="about-content" data-aos="fade-up">
         <h2>Minha História</h2>
         <p>
-          Sou um desenvolvedor apaixonado por criar produtos digitais que
-          realmente impactam as pessoas. Foco em código otimizado, arquitetura
-          escalável e interfaces imersivas.
+          Sou desenvolvedor com foco em back-end e banco de dados. Tenho
+          experiência com SQL Server, modelagem de dados, procedures, triggers e
+          otimização de queries. <br />
+          Desenvolvo APIs REST com Node.js e Express, aplicando arquitetura em
+          camadas, autenticação com JWT e controle de acesso com RLS no
+          Supabase. Também atuo com C# em aplicações desktop. <br />
+          Busco evoluir constantemente em arquitetura, segurança e performance,
+          sempre desenvolvendo projetos práticos para consolidar conhecimento.
+          <br />
         </p>
       </div>
     </section>
@@ -176,7 +191,7 @@
             class="btn-whatsapp"
           >
             <i class="bi bi-whatsapp"></i>
-            <span>+55 (17) 98137-6115</span>
+            <span>Entre em contato</span>
           </a>
         </div>
       </div>

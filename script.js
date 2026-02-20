@@ -16,10 +16,35 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Smooth scroll apenas para links internos que não são botões de modal
+// --- LÓGICA DO MENU MOBILE ---
+const mobileMenuBtn = document.getElementById("mobile-menu");
+const navLinksContainer = document.getElementById("nav-links");
+const navItems = document.querySelectorAll(".nav-item");
+const menuIcon = mobileMenuBtn.querySelector("i");
+
+// Abre/Fecha Menu
+mobileMenuBtn.addEventListener("click", () => {
+  navLinksContainer.classList.toggle("active");
+
+  // Troca o ícone (Hamburger <-> X)
+  if (navLinksContainer.classList.contains("active")) {
+    menuIcon.classList.replace("bi-list", "bi-x-lg");
+  } else {
+    menuIcon.classList.replace("bi-x-lg", "bi-list");
+  }
+});
+
+// Fecha o menu ao clicar em um link
+navItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    navLinksContainer.classList.remove("active");
+    menuIcon.classList.replace("bi-x-lg", "bi-list");
+  });
+});
+
+// Smooth Scroll (ignora href="#")
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
-    // Ignora o link se ele tiver um "#" vazio (usado pelo botão Contato)
     if (this.getAttribute("href") === "#") return;
 
     e.preventDefault();
@@ -35,7 +60,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
 // --- LÓGICA DOS MODAIS (PROJETOS & CONTATO) ---
 
-// Elementos - Projeto
 const projectModal = document.getElementById("projectModal");
 const closeProjectBtn = document.getElementById("closeProjectModal");
 const carouselSlidesContainer = document.getElementById("carouselSlides");
@@ -45,7 +69,6 @@ const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
 const projectCards = document.querySelectorAll(".card[data-project]");
 
-// Elementos - Contato
 const contactModal = document.getElementById("contactModal");
 const closeContactBtn = document.getElementById("closeContactModal");
 const btnNavContact = document.getElementById("btnContact");
@@ -55,14 +78,10 @@ let totalSlides = 0;
 
 const projectsData = {
   "proj-1": {
-    title: "Fintech App",
+    title: "SaaS Billing",
     description:
-      "Uma aplicação bancária completa com foco em experiência do usuário, dashboards interativos e segurança de dados.",
-    images: [
-      "linear-gradient(45deg, #0f172a, #1e293b)",
-      "linear-gradient(45deg, #000000, #171717)",
-      "linear-gradient(45deg, #1a1a2e, #16213e)",
-    ],
+      "Uma aplicação desenvolvida para fins de estudo. Por esse motivo, certos trechos do código — com exceção do arquivo .env — está disponibilizado neste repositório.",
+    images: ["src/routes.png", "src/controller.png", "src/app.png"],
   },
   "proj-2": {
     title: "E-commerce Platform",
@@ -75,7 +94,6 @@ const projectsData = {
   },
 };
 
-// Funções de Abertura
 function openProjectModal(projectId) {
   const data = projectsData[projectId];
   if (!data) return;
@@ -84,13 +102,18 @@ function openProjectModal(projectId) {
   modalDesc.textContent = data.description;
   carouselSlidesContainer.innerHTML = "";
 
-  data.images.forEach((imgGradient, index) => {
+  data.images.forEach((imgPath, index) => {
     const slide = document.createElement("div");
     slide.classList.add("carousel-slide");
     if (index === 0) slide.classList.add("active");
 
-    slide.style.background = imgGradient;
-    slide.innerHTML = `<span style="opacity: 0.3;">CODE_SCREEN_0${index + 1}</span>`;
+    // NOVO: Aplica a imagem real como background-image
+    slide.style.backgroundImage = `url('${imgPath}')`;
+    slide.style.backgroundSize = "cover";
+    slide.style.backgroundPosition = "center";
+
+    // NOVO: Deixamos o innerHTML vazio para tirar o texto "CODE_SCREEN"
+    slide.innerHTML = "";
 
     carouselSlidesContainer.appendChild(slide);
   });
@@ -103,12 +126,11 @@ function openProjectModal(projectId) {
 }
 
 function openContactModal(e) {
-  e.preventDefault(); // Previne que a página pule para o topo ao clicar em href="#"
+  e.preventDefault();
   contactModal.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
-// Função de Fechamento Geral
 function closeModals() {
   projectModal.classList.remove("active");
   contactModal.classList.remove("active");
@@ -119,7 +141,6 @@ function closeModals() {
   }, 300);
 }
 
-// Navegação do Carrossel
 function changeSlide(direction) {
   const slides = document.querySelectorAll(".carousel-slide");
   if (slides.length === 0) return;
@@ -135,7 +156,6 @@ function changeSlide(direction) {
   slides[currentSlideIndex].classList.add("active");
 }
 
-// Event Listeners - Abertura
 projectCards.forEach((card) => {
   card.addEventListener("click", () => {
     const projectId = card.getAttribute("data-project");
@@ -145,25 +165,21 @@ projectCards.forEach((card) => {
 
 btnNavContact.addEventListener("click", openContactModal);
 
-// Event Listeners - Fechamento
 closeProjectBtn.addEventListener("click", closeModals);
 closeContactBtn.addEventListener("click", closeModals);
 
 [projectModal, contactModal].forEach((modal) => {
   modal.addEventListener("click", (e) => {
-    // Se clicar no overlay escuro (fora do container), fecha o modal
     if (e.target === modal) {
       closeModals();
     }
   });
 });
 
-// Event Listeners - Carrossel e Teclado
 nextBtn.addEventListener("click", () => changeSlide("next"));
 prevBtn.addEventListener("click", () => changeSlide("prev"));
 
 document.addEventListener("keydown", (e) => {
-  // Tecla ESC fecha qualquer modal ativo
   if (
     projectModal.classList.contains("active") ||
     contactModal.classList.contains("active")
@@ -171,7 +187,6 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeModals();
   }
 
-  // Setas controlam o carrossel (apenas se o modal de projeto estiver aberto)
   if (projectModal.classList.contains("active")) {
     if (e.key === "ArrowRight") changeSlide("next");
     if (e.key === "ArrowLeft") changeSlide("prev");
