@@ -1,5 +1,10 @@
-// --- Configurações Iniciais (AOS e Navbar) ---
+// --- Forçar a página a carregar sempre no topo ---
+if (history.scrollRestoration) {
+  history.scrollRestoration = "manual";
+}
+window.scrollTo(0, 0);
 
+// --- Configurações Iniciais (AOS e Navbar) ---
 AOS.init({
   duration: 1000,
   easing: "ease-out-cubic",
@@ -22,11 +27,9 @@ const navLinksContainer = document.getElementById("nav-links");
 const navItems = document.querySelectorAll(".nav-item");
 const menuIcon = mobileMenuBtn.querySelector("i");
 
-// Abre/Fecha Menu
 mobileMenuBtn.addEventListener("click", () => {
   navLinksContainer.classList.toggle("active");
 
-  // Troca o ícone (Hamburger <-> X)
   if (navLinksContainer.classList.contains("active")) {
     menuIcon.classList.replace("bi-list", "bi-x-lg");
   } else {
@@ -34,7 +37,6 @@ mobileMenuBtn.addEventListener("click", () => {
   }
 });
 
-// Fecha o menu ao clicar em um link
 navItems.forEach((item) => {
   item.addEventListener("click", () => {
     navLinksContainer.classList.remove("active");
@@ -42,7 +44,6 @@ navItems.forEach((item) => {
   });
 });
 
-// Smooth Scroll (ignora href="#")
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     if (this.getAttribute("href") === "#") return;
@@ -76,12 +77,13 @@ const btnNavContact = document.getElementById("btnContact");
 let currentSlideIndex = 0;
 let totalSlides = 0;
 
+// Projetos Atualizados com as suas imagens
 const projectsData = {
   "proj-1": {
     title: "SaaS Billing",
     description:
-      "Uma aplicação desenvolvida para fins de estudo. Por esse motivo, certos trechos do código — com exceção do arquivo .env — está disponibilizado neste repositório.",
-    images: ["src/routes.png", "src/controller.png", "src/app.png"],
+      "API criada para fins educacionais que simula diferentes métodos de pagamento, sem integração com gateways de pagamento reais. O foco do projeto é praticar regras de negócio, validações e fluxos transacionais.",
+    images: ["src/routes.png", "src/app.png", "src/controller.png"],
   },
   "proj-2": {
     title: "E-commerce Platform",
@@ -107,13 +109,17 @@ function openProjectModal(projectId) {
     slide.classList.add("carousel-slide");
     if (index === 0) slide.classList.add("active");
 
-    // NOVO: Aplica a imagem real como background-image
-    slide.style.backgroundImage = `url('${imgPath}')`;
-    slide.style.backgroundSize = "cover";
-    slide.style.backgroundPosition = "center";
-
-    // NOVO: Deixamos o innerHTML vazio para tirar o texto "CODE_SCREEN"
-    slide.innerHTML = "";
+    // Verifica se é imagem real ou apenas um placeholder de gradiente (para o projeto 2)
+    if (imgPath.startsWith("src/")) {
+      slide.style.backgroundImage = `url('${imgPath}')`;
+      slide.style.backgroundSize = "contain"; // Contain para não cortar as imagens das rotas
+      slide.style.backgroundRepeat = "no-repeat";
+      slide.style.backgroundPosition = "center";
+      slide.innerHTML = "";
+    } else {
+      slide.style.background = imgPath;
+      slide.innerHTML = "";
+    }
 
     carouselSlidesContainer.appendChild(slide);
   });

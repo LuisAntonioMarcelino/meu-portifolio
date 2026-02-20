@@ -232,7 +232,7 @@ a {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.5px;
-  z-index: 1002; /* Fica acima do menu mobile */
+  z-index: 1002;
 }
 
 .logo span {
@@ -244,7 +244,7 @@ a {
   font-size: 2rem;
   color: var(--text-color);
   cursor: pointer;
-  z-index: 1002; /* Fica acima do menu mobile */
+  z-index: 1002;
   transition: 0.3s;
 }
 
@@ -445,7 +445,7 @@ a {
 }
 
 .card-image {
-  height: 350px;
+  height: 300px; /* Reduzi um pouco a imagem para caber a tech stack */
   background-size: cover;
   background-position: center;
 }
@@ -476,8 +476,94 @@ a {
   font-size: 0.95rem;
 }
 
+/* --- TECH STACK DOS CARDS --- */
+.tech-stack {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.tech-category {
+  flex: 1;
+}
+
+.tech-category h4 {
+  font-size: 0.75rem;
+  color: var(--secondary-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.tech-category ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-category li {
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  color: #e2e8f0;
+}
+
+/* Animação Front-end: Flutuação Roxa */
+.frontend li {
+  animation: floatFront 3s ease-in-out infinite;
+}
+.frontend li:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.frontend li:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+@keyframes floatFront {
+  0%,
+  100% {
+    transform: translateY(0);
+    border-color: rgba(139, 92, 246, 0.2);
+  }
+  50% {
+    transform: translateY(-4px);
+    border-color: rgba(139, 92, 246, 0.8);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+  }
+}
+
+/* Animação Back-end: Pulso Cibernético Azul */
+.backend li {
+  animation: pulseBack 3s ease-in-out infinite;
+}
+.backend li:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.backend li:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes pulseBack {
+  0%,
+  100% {
+    transform: scale(1);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    border-color: rgba(59, 130, 246, 0.8);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+  }
+}
+
+/* Efeito Hover do Card Inteiro */
 .card:hover {
-  transform: translateY(-15px) scale(1.05);
+  transform: translateY(-15px) scale(1.03);
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.5),
     0 0 20px rgba(139, 92, 246, 0.2);
@@ -535,7 +621,7 @@ a {
   }
 }
 
-/* --- ESTILOS DOS MODAIS --- */
+/* --- ESTILOS COMPARTILHADOS DOS MODAIS --- */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -602,6 +688,7 @@ a {
   transform: rotate(90deg);
 }
 
+/* --- MODAL DO PROJETO --- */
 .carousel-wrapper {
   position: relative;
   height: 500px;
@@ -682,6 +769,7 @@ a {
   color: var(--secondary-text);
 }
 
+/* --- MODAL DE CONTATO --- */
 .contact-modal-container {
   max-width: 450px;
   background: radial-gradient(
@@ -753,10 +841,10 @@ a {
 
 /* --- RESPONSIVIDADE TOTAL (MOBILE & TABLET) --- */
 @media (max-width: 768px) {
-  /* Navbar Mobile com Fundo Embaçado (Overlay) */
   .menu-toggle {
     display: block;
   }
+
   .nav-links {
     position: fixed;
     top: 0;
@@ -771,18 +859,20 @@ a {
     transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 1001;
   }
+
   .nav-links.active {
     right: 0;
   }
+
   .nav-links a {
-    font-size: 1.5rem; /* Letras grandes no menu mobile */
+    font-size: 1.5rem;
     margin: 15px 0;
   }
+
   .btn-nav-contact {
     margin-top: 20px;
   }
 
-  /* Tipografia e Espaçamentos ajustados */
   .hero {
     padding-top: 80px;
   }
@@ -804,56 +894,64 @@ a {
     font-size: 2.2rem;
   }
 
-  /* Botões empilhados */
   .cta-group {
     flex-direction: column;
     width: 100%;
     gap: 15px;
   }
+
   .btn-primary,
   .btn-secondary {
     width: 100%;
     justify-content: center;
   }
 
-  /* Grid do Projeto: agora 1 coluna em telas menores */
   .grid {
     grid-template-columns: minmax(100%, 1fr);
     gap: 30px;
   }
+
   .card-image {
-    height: 250px;
+    height: 200px; /* Reduzido para caber melhor na tela do celular */
   }
 
-  /* Redes Sociais no final da seção hero */
+  /* Ajuste da Tech Stack no Mobile */
+  .tech-stack {
+    flex-direction: column; /* Empilha Back-end abaixo de Front-end no celular */
+    gap: 15px;
+  }
+
   .social-side-wrapper {
     position: absolute;
     top: auto;
-    bottom: 80px; /* Acima do indicador de scroll */
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
     flex-direction: row;
     margin: 0;
     height: auto;
   }
+
   .social-side-menu {
     flex-direction: row;
     padding: 12px 20px;
     gap: 20px;
   }
+
   .social-line {
     display: none;
   }
 
-  /* Ajustes dos Modais */
   .carousel-wrapper {
     height: 300px;
   }
+
   .carousel-btn {
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
   }
+
   .contact-modal-container {
     padding: 40px 20px;
   }
