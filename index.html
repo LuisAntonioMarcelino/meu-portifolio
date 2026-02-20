@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev Portfolio | Antigravity Style</title>
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='8 6 2 12 8 18'%3E%3C/polyline%3E%3Cpolyline points='16 6 22 12 16 18'%3E%3C/polyline%3E%3C/svg%3E"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <div class="bg-elements">
+      <div class="bg-grid"></div>
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <div
+      class="social-side-wrapper"
+      data-aos="fade-right"
+      data-aos-delay="800"
+      data-aos-duration="1000"
+    >
+      <div class="social-side-menu">
+        <a
+          href="https://github.com/LuisAntonioMarcelino"
+          target="_blank"
+          aria-label="GitHub"
+        >
+          <i class="bi bi-github"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/luis-antonio-marcelino/"
+          target="_blank"
+          aria-label="LinkedIn"
+        >
+          <i class="bi bi-linkedin"></i>
+        </a>
+      </div>
+      <div class="social-line"></div>
+    </div>
+
+    <nav class="navbar">
+      <div class="logo">DEV<span>.</span></div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#work">Projetos</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#" class="btn-nav-contact" id="btnContact">Contato</a></li>
+      </ul>
+    </nav>
+
+    <section id="home" class="hero">
+      <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+        <p class="greeting">
+          Olá, eu sou o <br />
+          <strong class="animated-name">Luis Antonio</strong>
+        </p>
+
+        <h1>Desenvolvedor <br />Full Stack<span>.</span></h1>
+        <p>
+          Construindo o futuro com código limpo, inteligência artificial e
+          experiências memoráveis.
+        </p>
+        <div class="cta-group">
+          <a href="#work" class="btn-primary"
+            >Ver Projetos <i class="bi bi-arrow-right"></i
+          ></a>
+          <a href="#about" class="btn-secondary">Minha História</a>
+        </div>
+      </div>
+      <div class="scroll-indicator"></div>
+    </section>
+
+    <section id="work" class="projects">
+      <div class="section-header" data-aos="fade-right">
+        <h2>Projetos Selecionados</h2>
+        <p>Trabalhos recentes que unem design e arquitetura avançada.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card" data-aos="fade-up" data-project="proj-1">
+          <div class="card-image bg-1"></div>
+          <div class="card-info">
+            <h3>Fintech App</h3>
+            <p>UI/UX & Development</p>
+          </div>
+        </div>
+        <div
+          class="card"
+          data-aos="fade-up"
+          data-aos-delay="200"
+          data-project="proj-2"
+        >
+          <div class="card-image bg-2"></div>
+          <div class="card-info">
+            <h3>E-commerce Platform</h3>
+            <p>Full Stack Solution</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about-content" data-aos="fade-up">
+        <h2>Minha História</h2>
+        <p>
+          Sou um desenvolvedor apaixonado por criar produtos digitais que
+          realmente impactam as pessoas. Foco em código otimizado, arquitetura
+          escalável e interfaces imersivas.
+        </p>
+      </div>
+    </section>
+
+    <div class="modal-overlay" id="projectModal">
+      <button class="modal-close" id="closeProjectModal">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <div class="modal-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-slides" id="carouselSlides"></div>
+
+          <button class="carousel-btn prev-btn">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next-btn">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+
+        <div class="modal-info">
+          <h3 id="modalTitle">Nome do Projeto</h3>
+          <p id="modalDesc">Descrição detalhada do projeto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="contactModal">
+      <button class="modal-close" id="closeContactModal">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <div class="modal-container contact-modal-container">
+        <div class="contact-content">
+          <div class="icon-glow">
+            <i class="bi bi-chat-dots-fill"></i>
+          </div>
+          <h3>Vamos construir algo incrível?</h3>
+          <p>
+            Estou disponível para novos desafios, parcerias e oportunidades. Me
+            mande uma mensagem e vamos conversar sobre o seu projeto!
+          </p>
+
+          <a
+            href="https://wa.me/5517981376115"
+            target="_blank"
+            class="btn-whatsapp"
+          >
+            <i class="bi bi-whatsapp"></i>
+            <span>+55 (17) 98137-6115</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
