@@ -86,12 +86,14 @@ const projectsData = {
     images: ["src/routes.png", "src/app.png", "src/controller.png"],
   },
   "proj-2": {
-    title: "E-commerce Platform",
+    title: "LUMIN restaurente",
     description:
-      "Plataforma de vendas escalável com painel administrativo, gestão de inventário e checkout otimizado.",
+      "Plataforma para visualização do cardapio, criada para fins de estudo aprofundado em HTML CSS e JS.",
     images: [
-      "linear-gradient(45deg, #064e3b, #065f46)",
-      "linear-gradient(45deg, #312e81, #3730a3)",
+      "src/homelumina.png",
+      "src/cardapiolumina.png",
+      "src/pratolumina.png",
+      "src/sobrelumina.png",
     ],
   },
 };
@@ -109,10 +111,9 @@ function openProjectModal(projectId) {
     slide.classList.add("carousel-slide");
     if (index === 0) slide.classList.add("active");
 
-    // Verifica se é imagem real ou apenas um placeholder de gradiente (para o projeto 2)
     if (imgPath.startsWith("src/")) {
       slide.style.backgroundImage = `url('${imgPath}')`;
-      slide.style.backgroundSize = "contain"; // Contain para não cortar as imagens das rotas
+      slide.style.backgroundSize = "contain";
       slide.style.backgroundRepeat = "no-repeat";
       slide.style.backgroundPosition = "center";
       slide.innerHTML = "";
