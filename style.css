@@ -827,6 +827,98 @@ a {
   color: #000000;
 }
 
+/* --- ESTILOS DO CURRÍCULO --- */
+.resume-section {
+  min-height: 100vh;
+  padding: 120px 8% 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.resume-header {
+  width: 100%;
+  max-width: 850px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+.resume-header h1 {
+  font-size: 3rem;
+  letter-spacing: -1px;
+}
+
+.resume-header h1 span {
+  color: var(--accent-color);
+}
+
+.resume-header p {
+  color: var(--secondary-text);
+  font-size: 1.1rem;
+}
+
+.btn-download {
+  padding: 12px 28px;
+  background: rgba(139, 92, 246, 0.1);
+  color: var(--accent-color);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 50px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+  background: var(--accent-color);
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+  transform: translateY(-3px);
+}
+
+.resume-sheet-container {
+  width: 100%;
+  max-width: 850px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.resume-sheet-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--accent-color);
+  filter: blur(80px);
+  opacity: 0.15;
+  z-index: -1;
+}
+
+.resume-sheet {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.resume-sheet:hover {
+  transform: translateY(-5px);
+}
+
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -967,5 +1059,22 @@ a {
     font-size: 1rem;
     width: 100%;
     justify-content: center;
+  }
+
+  /* Ajustes Currículo Mobile */
+  .resume-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+  .resume-header h1 {
+    font-size: 2.5rem;
+  }
+  .resume-sheet-container {
+    padding: 0 10px;
+  }
+  .resume-sheet {
+    border-radius: 4px;
   }
 }
